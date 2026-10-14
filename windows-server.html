@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soporte y Administración de Windows Server en Lima | Legiodynamis</title>
+  <meta name="description" content="Administración, hardening y soporte de Windows Server para empresas en Lima y Perú. Active Directory, GPO, parches, backups y resolución de incidentes con 15 años de experiencia." />
+  <meta name="keywords" content="soporte Windows Server Lima, administración Windows Server Perú, hardening Windows Server, Active Directory Lima, migración Windows Server, mantenimiento servidores Windows" />
+  <link rel="canonical" href="https://legiodynamis.com/windows-server" />
+  <meta property="og:title" content="Soporte y Administración de Windows Server en Lima | Legiodynamis" />
+  <meta property="og:description" content="Administración, hardening y soporte de Windows Server para empresas en Lima y Perú. Active Directory, GPO, parches, backups y resolución de incidentes con 15 años de experiencia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://legiodynamis.com/windows-server" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            ink: '#0f172a',
+            slateSoft: '#f8fafc',
+            line: '#e2e8f0',
+            coral: '#E95A4E',
+            coralDark: '#B93832'
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(15,23,42,0.08)',
+            panel: '0 24px 80px rgba(15,23,42,0.18)'
+          },
+          backgroundImage: {
+            hero: 'radial-gradient(circle at top left, rgba(233,90,78,0.18), transparent 28%), radial-gradient(circle at 85% 10%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(135deg, #0f172a 0%, #111827 52%, #0b1220 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .container { max-width: 1160px; }
+    .glass {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .light-card { border: 1px solid rgba(15,23,42,0.08); }
+    .dark-card { border: 1px solid rgba(255,255,255,0.10); }
+    .grid-fade::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15));
+      pointer-events: none;
+    }
+    .section-label {
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Administración de Windows Server",
+    "provider": {
+      "@type": "Organization",
+      "name": "Legiodynamis",
+      "url": "https://legiodynamis.com"
+    },
+    "areaServed": { "@type": "Country", "name": "Peru" },
+    "description": "Administración, hardening y soporte de Windows Server para empresas en Lima y Perú. Active Directory, GPO, parches, backups y resolución de incidentes con 15 años de experiencia."
+  }
+  </script>
+</head>
+<body class="bg-slateSoft text-neutral-900 font-sans antialiased">
+  <header class="sticky top-0 z-50 glass text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <svg class="w-9 h-9" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="ldg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#E95A4E"/>
+              <stop offset="1" stop-color="#B93832"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4c10 7 20 6 26 8v20c0 16-11 25-26 28C17 57 6 48 6 32V12c6-2 16-1 26-8z" fill="url(#ldg)" stroke="#F8FAFC" stroke-width="2.2" />
+          <path d="M22 20h20M26 20v28M32 20v32M38 20v28" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M22 24h20" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="font-semibold tracking-tight">Legiodynamis</div>
+          <div class="text-[11px] text-white/60 -mt-0.5">Infraestructura TI</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="/#servicios" class="hover:text-white transition">Servicios</a>
+        <a href="/#porque" class="hover:text-white transition">Por qué nosotros</a>
+        <a href="/#proceso" class="hover:text-white transition">Cómo trabajamos</a>
+        <a href="/#precios" class="hover:text-white transition">Planes</a>
+        <a href="/#contacto" class="hover:text-white transition">Contacto</a>
+      </nav>
+      <a href="/#contacto" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-ink font-semibold hover:bg-white/90 transition">
+        Hablar contigo
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden bg-hero text-white grid-fade">
+    <div class="container relative mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16 lg:pt-20 lg:pb-20">
+      <div data-aos="fade-up">
+        <p class="text-xs text-white/50"><a href="/" class="hover:text-white/80">Inicio</a> / <a href="/#servicios" class="hover:text-white/80">Servicios</a> / Windows Server</p>
+        <div class="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-white/80">
+          <span class="w-2 h-2 rounded-full bg-coral"></span>
+          Especialidad: Windows Server
+        </div>
+        <h1 class="mt-6 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.08] max-w-3xl">Windows Server: administración experta, sin sorpresas</h1>
+        <p class="mt-6 text-lg text-white/72 max-w-2xl leading-relaxed">Instalación, mantenimiento, hardening y soporte de servidores Windows Server para empresas que necesitan estabilidad real, no promesas.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="/#contacto" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-coral text-white font-semibold hover:opacity-95 transition shadow-panel">
+            Solicitar una conversación
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="/#precios" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-white/12 bg-white/5 text-white font-semibold hover:bg-white/10 transition">
+            Ver planes
+          </a>
+        </div>
+        <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl">
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Experiencia</div>
+              <div class="mt-2 text-xl font-bold">15 años</div>
+              <div class="mt-1 text-white/60 text-sm">en operación y soporte</div>
+            </div>
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Cobertura</div>
+              <div class="mt-2 text-xl font-bold">AD · GPO · Roles</div>
+              <div class="mt-1 text-white/60 text-sm">parches y hardening</div>
+            </div>
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Formato</div>
+              <div class="mt-2 text-xl font-bold">Servicio cercano</div>
+              <div class="mt-1 text-white/60 text-sm">atención directa</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Alcance</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Qué incluye el servicio</h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="server" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Instalación y migración</h3>
+          <p class="mt-3 text-neutral-600">Despliegue de nuevos servidores o migración desde versiones antiguas, con plan de rollback definido.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="60">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="users" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Active Directory y GPO</h3>
+          <p class="mt-3 text-neutral-600">Diseño y mantenimiento de dominio, unidades organizativas, políticas de grupo y control de accesos.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="120">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="layers" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Roles y features</h3>
+          <p class="mt-3 text-neutral-600">DNS, DHCP, File Server, Print Server, RDS y otros roles configurados según la operación real.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="180">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="refresh-cw" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Parches y actualizaciones</h3>
+          <p class="mt-3 text-neutral-600">Ciclo de actualizaciones controlado, sin interrumpir la operación diaria del negocio.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="240">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Hardening</h3>
+          <p class="mt-3 text-neutral-600">Aplicación de buenas prácticas de seguridad (alineadas a CIS) sin romper la funcionalidad existente.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="database" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Backups y continuidad</h3>
+          <p class="mt-3 text-neutral-600">Estrategia de respaldo verificada, no solo configurada: se prueba que realmente restaure.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_.85fr] gap-10">
+      <div data-aos="fade-right">
+        <div class="section-label text-xs text-coralDark font-semibold">Diagnóstico</div>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Problemas que solemos resolver</h2>
+        <ul class="mt-8 space-y-4">
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Servidores desatendidos por años, sin documentación ni control de cambios.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Active Directory con estructura desordenada o políticas de grupo conflictivas.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Incidentes recurrentes que dependen de la memoria de una sola persona.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Backups configurados pero nunca validados.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Servidores sin parches de seguridad por temor a romper algo en producción.</span></li>
+        </ul>
+      </div>
+      <div class="rounded-[2rem] bg-slateSoft light-card p-8" data-aos="fade-left">
+        <div class="section-label text-xs text-coralDark font-semibold">Para quién</div>
+        <h3 class="mt-3 text-2xl font-bold">¿Es este servicio para tu empresa?</h3>
+        <p class="mt-4 text-neutral-600 leading-relaxed">Pensado para PyMEs de entre 20 y 150 colaboradores con uno o varios servidores Windows Server on-premise o en entornos híbridos, que necesitan un especialista senior sin contratar una estructura interna grande.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Cómo trabajamos</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Un proceso simple y entendible</h2>
+      </div>
+      <div class="mt-12 grid md:grid-cols-4 gap-6">
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-sm font-semibold text-coralDark">Paso 1</div>
+          <h3 class="mt-3 text-xl font-semibold">Conversamos</h3>
+          <p class="mt-2 text-neutral-600">Revisamos el estado actual del entorno: versiones, roles, riesgos y puntos débiles.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="70">
+          <div class="text-sm font-semibold text-coralDark">Paso 2</div>
+          <h3 class="mt-3 text-xl font-semibold">Revisamos</h3>
+          <p class="mt-2 text-neutral-600">Priorizamos lo urgente frente a lo importante, con una ruta de trabajo clara.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="140">
+          <div class="text-sm font-semibold text-coralDark">Paso 3</div>
+          <h3 class="mt-3 text-xl font-semibold">Proponemos</h3>
+          <p class="mt-2 text-neutral-600">Ejecutamos cambios controlados, documentando cada paso relevante.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="210">
+          <div class="text-sm font-semibold text-coralDark">Paso 4</div>
+          <h3 class="mt-3 text-xl font-semibold">Ejecutamos</h3>
+          <p class="mt-2 text-neutral-600">Dejamos el entorno más ordenado, con runbooks y soporte continuo si se requiere.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,90,78,0.18),transparent_25%)]"></div>
+        <div class="relative z-10 max-w-2xl">
+          <h3 class="text-2xl md:text-3xl font-bold">¿Tu Windows Server necesita orden y soporte serio?</h3>
+          <p class="text-white/70 mt-3">Conversemos sobre tu entorno actual y definamos una ruta de mejora realista.</p>
+        </div>
+        <a href="/#contacto" class="relative z-10 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-coral text-white font-semibold hover:opacity-95 transition">
+          Agendar conversación
+          <i data-lucide="phone" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-slate-200 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-7 h-7" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 4c10 7 20 6 26 8v20c0 16-11 25-26 28C17 57 6 48 6 32V12c6-2 16-1 26-8z" fill="#E95A4E" stroke="#0f172a" stroke-width="2.2" />
+            <path d="M22 20h20M26 20v28M32 20v32M38 20v28" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M22 24h20" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="font-semibold">Legiodynamis</div>
+            <div class="text-xs text-neutral-500">Infraestructura TI con atención directa</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 text-sm text-neutral-600">
+          <a href="/#servicios" class="hover:text-coral">Servicios</a>
+          <a href="/#porque" class="hover:text-coral">Por qué nosotros</a>
+          <a href="/#precios" class="hover:text-coral">Planes</a>
+          <a href="/#contacto" class="hover:text-coral">Contacto</a>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-neutral-500">© <span id="year"></span> Legiodynamis. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    lucide.createIcons();
+    AOS.init({ duration: 700, once: true, offset: 40 });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>

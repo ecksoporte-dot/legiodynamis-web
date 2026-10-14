@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Legiodynamis — Infraestructura TI confiable para empresas en crecimiento</title>
+  <meta name="description" content="Legiodynamis ayuda a empresas a operar mejor su infraestructura TI con experiencia real en Windows Server, VMware, Azure y automatización. Servicio cercano, claro y profesional." />
+  <meta name="keywords" content="infraestructura TI Peru, Windows Server soporte, VMware soporte, Azure consultoria, PowerShell automatizacion, servicios TI Lima" />
+  <meta property="og:title" content="Legiodynamis — Infraestructura TI confiable para empresas en crecimiento" />
+  <meta property="og:description" content="Soporte, mejora y operación de infraestructura TI con 15 años de experiencia y atención directa." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            ink: '#0f172a',
+            slateSoft: '#f8fafc',
+            line: '#e2e8f0',
+            coral: '#E95A4E',
+            coralDark: '#B93832'
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(15,23,42,0.08)',
+            panel: '0 24px 80px rgba(15,23,42,0.18)'
+          },
+          backgroundImage: {
+            hero: 'radial-gradient(circle at top left, rgba(233,90,78,0.18), transparent 28%), radial-gradient(circle at 85% 10%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(135deg, #0f172a 0%, #111827 52%, #0b1220 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .container { max-width: 1160px; }
+    .glass {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .light-card { border: 1px solid rgba(15,23,42,0.08); }
+    .dark-card { border: 1px solid rgba(255,255,255,0.10); }
+    .grid-fade::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15));
+      pointer-events: none;
+    }
+    .section-label {
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body class="bg-slateSoft text-neutral-900 font-sans antialiased">
+  <header class="sticky top-0 z-50 glass text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <svg class="w-9 h-9" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="ldg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#E95A4E"/>
+              <stop offset="1" stop-color="#B93832"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4c10 7 20 6 26 8v20c0 16-11 25-26 28C17 57 6 48 6 32V12c6-2 16-1 26-8z" fill="url(#ldg)" stroke="#F8FAFC" stroke-width="2.2" />
+          <path d="M22 20h20M26 20v28M32 20v32M38 20v28" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M22 24h20" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="font-semibold tracking-tight">Legiodynamis</div>
+          <div class="text-[11px] text-white/60 -mt-0.5">Infraestructura TI</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="#servicios" class="hover:text-white transition">Servicios</a>
+        <a href="#porque" class="hover:text-white transition">Por qué nosotros</a>
+        <a href="#proceso" class="hover:text-white transition">Cómo trabajamos</a>
+        <a href="#precios" class="hover:text-white transition">Planes</a>
+        <a href="#contacto" class="hover:text-white transition">Contacto</a>
+      </nav>
+      <a href="#contacto" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-ink font-semibold hover:bg-white/90 transition">
+        Hablar contigo
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden bg-hero text-white grid-fade">
+    <div class="container relative mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-24 lg:pb-24">
+      <div class="grid lg:grid-cols-[1.08fr_.92fr] gap-12 items-center">
+        <div data-aos="fade-up">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-white/80">
+            <span class="w-2 h-2 rounded-full bg-coral"></span>
+            15 años de experiencia en servicios TI
+          </div>
+          <h1 class="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.02] max-w-4xl">
+            Infraestructura TI bien atendida,
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-coral">sin ruido y sin complicarte más.</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-white/72 max-w-2xl leading-relaxed">
+            Legiodynamis nace para ayudar a empresas que necesitan orden, continuidad y soporte técnico serio. Atención directa, experiencia real y una propuesta clara desde el primer contacto.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#contacto" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-coral text-white font-semibold hover:opacity-95 transition shadow-panel">
+              Solicitar una conversación
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#servicios" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-white/12 bg-white/5 text-white font-semibold hover:bg-white/10 transition">
+              Ver servicios
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </a>
+          </div>
+          <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl">
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Enfoque</div>
+              <div class="mt-2 text-xl font-bold">Atención directa</div>
+              <div class="mt-1 text-white/60 text-sm">sin capas innecesarias</div>
+            </div>
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Experiencia</div>
+              <div class="mt-2 text-xl font-bold">15 años</div>
+              <div class="mt-1 text-white/60 text-sm">en operación y soporte</div>
+            </div>
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Especialidad</div>
+              <div class="mt-2 text-xl font-bold">Windows · VMware · Azure</div>
+              <div class="mt-1 text-white/60 text-sm">más automatización</div>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-left" data-aos-delay="120" class="relative">
+          <div class="absolute -inset-6 rounded-[2rem] bg-gradient-to-br from-coral/20 via-transparent to-white/10 blur-3xl"></div>
+          <div class="relative rounded-[2rem] bg-white/8 dark-card backdrop-blur-xl shadow-panel overflow-hidden">
+            <div class="p-6 border-b border-white/10 flex items-center justify-between">
+              <div>
+                <p class="text-sm text-white/55">Resumen de servicio</p>
+                <h3 class="text-xl font-semibold">Lo que recibe tu empresa</h3>
+              </div>
+              <div class="inline-flex items-center gap-2 rounded-full bg-emerald-400/10 border border-emerald-300/20 px-3 py-1 text-xs text-emerald-200">
+                <span class="w-2 h-2 rounded-full bg-emerald-300"></span>
+                Disponible
+              </div>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="rounded-2xl bg-white/6 border border-white/10 p-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-11 h-11 rounded-2xl bg-coral/15 flex items-center justify-center shrink-0"><i data-lucide="shield-check" class="w-5 h-5 text-coral"></i></div>
+                  <div>
+                    <div class="font-semibold">Estabilidad y buenas prácticas</div>
+                    <p class="mt-1 text-sm text-white/65">Hardening, cambios controlados, backups y documentación útil para operar con menos sobresaltos.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-2xl bg-white/6 border border-white/10 p-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-11 h-11 rounded-2xl bg-coral/15 flex items-center justify-center shrink-0"><i data-lucide="gauge" class="w-5 h-5 text-coral"></i></div>
+                  <div>
+                    <div class="font-semibold">Orden operativo</div>
+                    <p class="mt-1 text-sm text-white/65">Runbooks, tareas repetibles y visibilidad de incidentes para que el soporte no dependa solo de la memoria.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rounded-2xl bg-white/6 border border-white/10 p-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-11 h-11 rounded-2xl bg-coral/15 flex items-center justify-center shrink-0"><i data-lucide="bot" class="w-5 h-5 text-coral"></i></div>
+                  <div>
+                    <div class="font-semibold">Automatización donde sí suma</div>
+                    <p class="mt-1 text-sm text-white/65">PowerShell y estandarización para ahorrar tiempo en tareas repetitivas sin volver complejo lo que debe ser simple.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4 pt-2">
+                <div class="rounded-2xl bg-black/15 p-4 border border-white/10">
+                  <div class="text-xs text-white/50">Formato</div>
+                  <div class="mt-2 text-lg font-semibold">Servicio cercano</div>
+                </div>
+                <div class="rounded-2xl bg-black/15 p-4 border border-white/10">
+                  <div class="text-xs text-white/50">Relación</div>
+                  <div class="mt-2 text-lg font-semibold">Directa y clara</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="-mt-8 relative z-10">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] bg-white shadow-soft light-card p-6 md:p-8 grid md:grid-cols-4 gap-5" data-aos="fade-up">
+        <div>
+          <div class="section-label text-[11px] text-coralDark font-semibold">Base sólida</div>
+          <h2 class="mt-2 text-2xl font-bold tracking-tight">Un sitio premium, pero con tono sobrio y creíble</h2>
+        </div>
+        <div class="rounded-2xl bg-slateSoft p-5 light-card">
+          <div class="text-sm text-neutral-500">Ideal para</div>
+          <div class="mt-1 text-xl font-bold">PyMEs y áreas TI</div>
+        </div>
+        <div class="rounded-2xl bg-slateSoft p-5 light-card">
+          <div class="text-sm text-neutral-500">Relación</div>
+          <div class="mt-1 text-xl font-bold">Trato directo</div>
+        </div>
+        <div class="rounded-2xl bg-slateSoft p-5 light-card">
+          <div class="text-sm text-neutral-500">Mensaje</div>
+          <div class="mt-1 text-xl font-bold">Claro y profesional</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Servicios</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Servicios enfocados en lo que más suele doler</h2>
+        <p class="mt-4 text-lg text-neutral-600">La propuesta está pensada para sonar seria y cercana: menos promesa inflada, más claridad sobre lo que puedes resolver hoy.</p>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="/windows-server" class="block rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="server" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Windows Server</h3>
+          <p class="mt-3 text-neutral-600">Implementación, mantenimiento, hardening, roles, parches y solución de incidentes con criterio operativo.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-coral">Ver servicio <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+        <a href="/vmware" class="block rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="60">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="cloud" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">VMware y virtualización</h3>
+          <p class="mt-3 text-neutral-600">Soporte para entornos virtuales, revisión de rendimiento, snapshots, storage y mejores prácticas de operación.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-coral">Ver servicio <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+        <a href="/automatizacion-powershell" class="block rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="120">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="workflow" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Automatización con PowerShell</h3>
+          <p class="mt-3 text-neutral-600">Scripts útiles para tareas repetitivas, inventario, respaldos y estandarización sin agregar complejidad innecesaria.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-coral">Ver servicio <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+        <a href="/azure" class="block rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="180">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="cloud-cog" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Azure y Microsoft 365</h3>
+          <p class="mt-3 text-neutral-600">Migración y administración de Azure AD, Microsoft 365, licenciamiento y entornos híbridos.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-coral">Ver servicio <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+        <a href="/ciberseguridad" class="block rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="240">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Ciberseguridad y hardening</h3>
+          <p class="mt-3 text-neutral-600">Línea base de seguridad, control de accesos, respaldos contra ransomware y publicación segura de aplicaciones.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-coral">Ver servicio <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="porque" class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[.92fr_1.08fr] gap-10 items-start">
+      <div data-aos="fade-right">
+        <div class="section-label text-xs text-coralDark font-semibold">Por qué nosotros</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Lo premium aquí no es la exageración. Es el cuidado en los detalles.</h2>
+        <p class="mt-4 text-lg text-neutral-600">..</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5" data-aos="fade-left">
+        <div class="rounded-3xl p-6 bg-slateSoft light-card">
+          <div class="w-11 h-11 rounded-2xl bg-white light-card flex items-center justify-center"><i data-lucide="user-check" class="w-5 h-5 text-coral"></i></div>
+          <h3 class="mt-4 text-xl font-semibold">Atención del especialista</h3>
+          <p class="mt-2 text-neutral-600">Quien conversa contigo entiende la operación técnica y puede proponer soluciones aterrizadas.</p>
+        </div>
+        <div class="rounded-3xl p-6 bg-slateSoft light-card">
+          <div class="w-11 h-11 rounded-2xl bg-white light-card flex items-center justify-center"><i data-lucide="file-text" class="w-5 h-5 text-coral"></i></div>
+          <h3 class="mt-4 text-xl font-semibold">Documentación útil</h3>
+          <p class="mt-2 text-neutral-600">Runbooks, procedimientos y notas claras para que el conocimiento quede, no se pierda.</p>
+        </div>
+        <div class="rounded-3xl p-6 bg-slateSoft light-card">
+          <div class="w-11 h-11 rounded-2xl bg-white light-card flex items-center justify-center"><i data-lucide="clock-3" class="w-5 h-5 text-coral"></i></div>
+          <h3 class="mt-4 text-xl font-semibold">Respuesta razonable</h3>
+          <p class="mt-2 text-neutral-600">Compromiso claro en tiempos y alcance, sin vender una estructura que aún no necesitas mostrar.</p>
+        </div>
+        <div class="rounded-3xl p-6 bg-slateSoft light-card">
+          <div class="w-11 h-11 rounded-2xl bg-white light-card flex items-center justify-center"><i data-lucide="cpu" class="w-5 h-5 text-coral"></i></div>
+          <h3 class="mt-4 text-xl font-semibold">Experiencia aplicada</h3>
+          <p class="mt-2 text-neutral-600">Más de 15 años resolviendo incidencias, manteniendo plataformas y mejorando entornos reales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Cómo trabajamos</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Un proceso simple, entendible y profesional</h2>
+      </div>
+      <div class="mt-12 grid md:grid-cols-4 gap-5">
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up">
+          <div class="text-sm font-semibold text-coralDark">Paso 1</div>
+          <h3 class="mt-3 text-xl font-semibold">Conversamos</h3>
+          <p class="mt-2 text-neutral-600">Entendemos el entorno, el dolor principal y la urgencia real.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="70">
+          <div class="text-sm font-semibold text-coralDark">Paso 2</div>
+          <h3 class="mt-3 text-xl font-semibold">Revisamos</h3>
+          <p class="mt-2 text-neutral-600">Detectamos riesgos, tareas pendientes y oportunidades de mejora.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="140">
+          <div class="text-sm font-semibold text-coralDark">Paso 3</div>
+          <h3 class="mt-3 text-xl font-semibold">Proponemos</h3>
+          <p class="mt-2 text-neutral-600">Planteamos alcance, prioridades y una ruta razonable para avanzar.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="210">
+          <div class="text-sm font-semibold text-coralDark">Paso 4</div>
+          <h3 class="mt-3 text-xl font-semibold">Ejecutamos</h3>
+          <p class="mt-2 text-neutral-600">Implementamos con seguimiento, comunicación clara y documentación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="casos" class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="md:flex items-end justify-between gap-8" data-aos="fade-up">
+        <div class="max-w-2xl">
+          <div class="section-label text-xs text-coralDark font-semibold">Resultados esperados</div>
+          <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Señales de una operación más sana</h2>
+          <p class="mt-4 text-lg text-neutral-600">En vez de inflar cifras, la sección habla de resultados concretos que un cliente sí espera percibir.</p>
+        </div>
+      </div>
+      <div class="mt-12 grid lg:grid-cols-3 gap-6">
+        <div class="rounded-3xl p-7 bg-slateSoft light-card" data-aos="fade-up">
+          <div class="text-sm text-neutral-500">Menos dependencia de lo improvisado</div>
+          <div class="mt-3 text-2xl font-bold">Más orden operativo</div>
+          <p class="mt-3 text-neutral-600">Tareas repetibles, documentación y mejores prácticas para que el entorno sea más predecible.</p>
+        </div>
+        <div class="rounded-3xl p-7 bg-slateSoft light-card" data-aos="fade-up" data-aos-delay="80">
+          <div class="text-sm text-neutral-500">Menos tiempo perdido</div>
+          <div class="mt-3 text-2xl font-bold">Respuesta más rápida</div>
+          <p class="mt-3 text-neutral-600">Mejor diagnóstico, menos ensayo y error, y más claridad sobre qué atender primero.</p>
+        </div>
+        <div class="rounded-3xl p-7 bg-slateSoft light-card" data-aos="fade-up" data-aos-delay="160">
+          <div class="text-sm text-neutral-500">Menos desorden técnico</div>
+          <div class="mt-3 text-2xl font-bold">Mejor continuidad</div>
+          <p class="mt-3 text-neutral-600">Ambientes más estables, cambios mejor controlados y menos sobresaltos en operación diaria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="clientes" class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Confianza</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">
+          Lo que dicen algunos clientes
+        </h2>
+        <p class="mt-4 text-lg text-neutral-600">
+          Experiencias de empresas en Perú con las que ya hemos trabajado en mejora
+          y operación de infraestructura TI.
+        </p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+
+        <div class="rounded-3xl p-6 bg-slateSoft light-card shadow-soft">
+          <p class="text-neutral-700">
+            “Excelente tiempo de respuesta y comunicación clara.
+            Nuestra infraestructura ahora es más estable y predecible.”
+          </p>
+          <div class="mt-5 text-sm">
+            <div class="font-semibold">Administrador TI — ANYPSA</div>
+            <div class="text-neutral-500">Lima, Perú</div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl p-6 bg-slateSoft light-card shadow-soft">
+          <p class="text-neutral-700">
+            “Migramos sin interrupciones y nuestros sistemas quedaron mejor documentados
+            y más fáciles de operar.”
+          </p>
+          <div class="mt-5 text-sm">
+            <div class="font-semibold">Gerencia TI — Autrisa</div>
+            <div class="text-neutral-500">Arequipa, Perú</div>
+          </div>
+        </div>
+
+        <div class="rounded-3xl p-6 bg-slateSoft light-card shadow-soft">
+          <p class="text-neutral-700">
+            “Automatizaron procesos con PowerShell y redujimos tiempos operativos
+            con un enfoque muy ordenado.”
+          </p>
+          <div class="mt-5 text-sm">
+            <div class="font-semibold">Jefe de Infraestructura — Indugrac SAC</div>
+            <div class="text-neutral-500">Cusco, Perú</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="precios" class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Planes</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Planes claros para empezar sin fricción</h2>
+        <p class="mt-4 text-lg text-neutral-600">Mantengo la estructura de pricing, pero con un lenguaje más realista para una empresa en etapa inicial.</p>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        <div class="rounded-3xl bg-white light-card shadow-soft overflow-hidden" data-aos="fade-up">
+          <div class="p-6 border-b border-slate-200">
+            <h3 class="text-xl font-semibold">Esencial</h3>
+            <p class="mt-2 text-sm text-neutral-500">Para empresas que necesitan apoyo puntual y orden básico.</p>
+          </div>
+          <div class="p-6">
+            <div class="flex items-end gap-1 flex-wrap"><span class="text-4xl font-extrabold">S/ 900 – S/ 1200</span><span class="text-neutral-500">/mes</span></div>
+            <ul class="mt-5 space-y-3 text-sm text-neutral-700">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Soporte remoto según alcance</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Revisión básica de servidores</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Gestión mensual de tareas clave</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Recomendaciones de mejora</li>
+            </ul>
+            <a href="#contacto" class="w-full mt-6 inline-flex items-center justify-center px-4 py-3 rounded-2xl bg-ink text-white font-medium hover:opacity-95 transition">Consultar</a>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-ink text-white shadow-panel overflow-hidden ring-1 ring-coral/50" data-aos="fade-up" data-aos-delay="80">
+          <div class="p-6 border-b border-white/10 flex items-center justify-between gap-3">
+            <div>
+              <h3 class="text-xl font-semibold">Profesional</h3>
+              <p class="mt-2 text-sm text-white/60">Para empresas que quieren más continuidad y seguimiento.</p>
+            </div>
+            <span class="inline-flex px-3 py-1 rounded-full bg-coral/15 text-coral text-xs font-semibold border border-coral/20">Recomendado</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-end gap-1 flex-wrap"><span class="text-4xl font-extrabold">S/ 1800 – S/ 2800</span><span class="text-white/60">/mes</span></div>
+            <ul class="mt-5 space-y-3 text-sm text-white/80">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Monitoreo y soporte con mayor continuidad</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Atención prioritaria para casos críticos</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Automatización y documentación</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Revisión periódica de mejoras</li>
+            </ul>
+            <a href="#contacto" class="w-full mt-6 inline-flex items-center justify-center px-4 py-3 rounded-2xl bg-coral text-white font-medium hover:opacity-95 transition">Consultar</a>
+          </div>
+        </div>
+        <div class="rounded-3xl bg-white light-card shadow-soft overflow-hidden" data-aos="fade-up" data-aos-delay="160">
+          <div class="p-6 border-b border-slate-200">
+            <h3 class="text-xl font-semibold">A medida</h3>
+            <p class="mt-2 text-sm text-neutral-500">Para proyectos, migraciones o acompañamiento más amplio.</p>
+          </div>
+          <div class="p-6">
+            <div class="flex items-end gap-1"><span class="text-4xl font-extrabold">Cotizable</span></div>
+            <ul class="mt-5 space-y-3 text-sm text-neutral-700">
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Evaluación según entorno y necesidad</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Migraciones, ordenamiento o continuidad</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Horas o alcance más flexible</li>
+              <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-coral mt-0.5"></i>Propuesta clara antes de iniciar</li>
+            </ul>
+            <a href="#contacto" class="w-full mt-6 inline-flex items-center justify-center px-4 py-3 rounded-2xl bg-ink text-white font-medium hover:opacity-95 transition">Consultar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,90,78,0.18),transparent_25%)]"></div>
+        <div class="relative z-10 max-w-2xl">
+          <h3 class="text-2xl md:text-3xl font-bold">Si estás empezando a ordenar tu operación TI, conversemos.</h3>
+          <p class="text-white/70 mt-3">La idea de esta web es transmitir experiencia, cercanía y criterio técnico. No parecer una corporación enorme, sino una propuesta seria que inspira confianza.</p>
+        </div>
+        <a href="#contacto" class="relative z-10 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-coral text-white font-semibold hover:opacity-95 transition">
+          Agendar conversación
+          <i data-lucide="phone" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-start">
+      <div data-aos="fade-right">
+        <div class="section-label text-xs text-coralDark font-semibold">Contacto</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Hablemos de tu entorno y veamos si puedo ayudarte</h2>
+        <p class="mt-4 text-lg text-neutral-600">..</p>
+        <div class="mt-8 space-y-4 text-neutral-700">
+          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-2xl bg-white light-card flex items-center justify-center"><i data-lucide="mail" class="w-4 h-4 text-coral"></i></div><a href="mailto:contacto@legiodynamis.com" class="hover:text-coral">contacto@legiodynamis.com</a></div>
+          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-2xl bg-white light-card flex items-center justify-center"><svg viewBox="0 0 32 32" class="w-4 h-4 text-coral" fill="currentColor" aria-hidden="true"><path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.386.663 4.617 1.815 6.518L4 29l7.671-1.783A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3zm6.965 16.845c-.297.836-1.474 1.53-2.412 1.73-.642.137-1.48.246-4.302-.924-3.61-1.496-5.93-5.163-6.111-5.404-.174-.24-1.464-1.949-1.464-3.718 0-1.768.927-2.638 1.256-3.001.33-.363.72-.454.96-.454.24 0 .48.003.69.014.222.011.518-.084.812.62.297.712 1.007 2.48 1.096 2.66.09.18.15.39.03.63-.12.24-.18.39-.36.6-.18.21-.378.469-.54.63-.18.18-.368.375-.158.735.21.36.936 1.545 2.01 2.503 1.38 1.23 2.544 1.611 2.904 1.793.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1.99 2.46 1.17.36.18.6.27.69.42.09.15.09.87-.207 1.706z"/></svg></div><span>@LegioDynamis_TI</span></div>
+          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-2xl bg-white light-card flex items-center justify-center"><i data-lucide="badge-check" class="w-4 h-4 text-coral"></i></div><span>Atención directa y respuesta clara</span></div>
+        </div>
+      </div>
+
+      <div class="rounded-[2rem] bg-white light-card shadow-soft overflow-hidden" data-aos="fade-left">
+        <div class="p-6 border-b border-slate-200">
+          <h3 class="text-lg font-semibold">Cuéntame brevemente tu necesidad</h3>
+          <p class="mt-1 text-sm text-neutral-500">Te responderé con una visión inicial y siguientes pasos razonables.</p>
+        </div>
+        <div class="p-6" id="contact-card">
+          <form action="https://formspree.io/f/xbdzgrja" method="POST" class="space-y-4">
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde legiodynamis.com">
+            <div class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label class="text-sm font-medium">Nombre</label>
+                <input name="nombre" required placeholder="Tu nombre" class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-coral" />
+              </div>
+              <div>
+                <label class="text-sm font-medium">Empresa</label>
+                <input name="empresa" placeholder="Tu empresa" class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-coral" />
+              </div>
+            </div>
+            <div>
+              <label class="text-sm font-medium">Email</label>
+              <input type="email" name="email" required placeholder="tucorreo@empresa.com" class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-coral" />
+            </div>
+            <div>
+              <label class="text-sm font-medium">Teléfono</label>
+              <input type="tel" name="telefono" placeholder="+51 ..." class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-coral" />
+            </div>
+            <div>
+              <label class="text-sm font-medium">Mensaje</label>
+              <textarea name="mensaje" required rows="5" placeholder="Cuéntame qué está pasando hoy en tu infraestructura o qué necesitas resolver" class="mt-1 w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:border-coral"></textarea>
+            </div>
+            <button type="submit" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-coral text-white font-medium hover:opacity-95 transition">
+              Enviar mensaje
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-slate-200 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-7 h-7" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 4c10 7 20 6 26 8v20c0 16-11 25-26 28C17 57 6 48 6 32V12c6-2 16-1 26-8z" fill="#E95A4E" stroke="#0f172a" stroke-width="2.2" />
+            <path d="M22 20h20M26 20v28M32 20v32M38 20v28" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M22 24h20" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="font-semibold">Legiodynamis</div>
+            <div class="text-xs text-neutral-500">Infraestructura TI con atención directa</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 text-sm text-neutral-600">
+          <a href="#servicios" class="hover:text-coral">Servicios</a>
+          <a href="#porque" class="hover:text-coral">Por qué nosotros</a>
+          <a href="#precios" class="hover:text-coral">Planes</a>
+          <a href="#contacto" class="hover:text-coral">Contacto</a>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-neutral-500">© <span id="year"></span> Legiodynamis. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    lucide.createIcons();
+    AOS.init({ duration: 700, once: true, offset: 40 });
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+  </script>
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>

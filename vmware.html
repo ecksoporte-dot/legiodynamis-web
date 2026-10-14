@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soporte y Administración de VMware en Lima | Legiodynamis</title>
+  <meta name="description" content="Soporte, mantenimiento y optimización de entornos VMware vSphere en Lima y Perú. Rendimiento, storage, snapshots y buenas prácticas de virtualización con 15 años de experiencia." />
+  <meta name="keywords" content="soporte VMware Lima, administración vSphere Perú, virtualización VMware, consultoría VMware Lima, mantenimiento ESXi, optimización storage VMware" />
+  <link rel="canonical" href="https://legiodynamis.com/vmware" />
+  <meta property="og:title" content="Soporte y Administración de VMware en Lima | Legiodynamis" />
+  <meta property="og:description" content="Soporte, mantenimiento y optimización de entornos VMware vSphere en Lima y Perú. Rendimiento, storage, snapshots y buenas prácticas de virtualización con 15 años de experiencia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://legiodynamis.com/vmware" />
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            ink: '#0f172a',
+            slateSoft: '#f8fafc',
+            line: '#e2e8f0',
+            coral: '#E95A4E',
+            coralDark: '#B93832'
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(15,23,42,0.08)',
+            panel: '0 24px 80px rgba(15,23,42,0.18)'
+          },
+          backgroundImage: {
+            hero: 'radial-gradient(circle at top left, rgba(233,90,78,0.18), transparent 28%), radial-gradient(circle at 85% 10%, rgba(255,255,255,0.08), transparent 24%), linear-gradient(135deg, #0f172a 0%, #111827 52%, #0b1220 100%)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .container { max-width: 1160px; }
+    .glass {
+      background: rgba(15, 23, 42, 0.78);
+      backdrop-filter: blur(14px) saturate(160%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .light-card { border: 1px solid rgba(15,23,42,0.08); }
+    .dark-card { border: 1px solid rgba(255,255,255,0.10); }
+    .grid-fade::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15));
+      pointer-events: none;
+    }
+    .section-label {
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Administración de entornos VMware",
+    "provider": {
+      "@type": "Organization",
+      "name": "Legiodynamis",
+      "url": "https://legiodynamis.com"
+    },
+    "areaServed": { "@type": "Country", "name": "Peru" },
+    "description": "Soporte, mantenimiento y optimización de entornos VMware vSphere en Lima y Perú. Rendimiento, storage, snapshots y buenas prácticas de virtualización con 15 años de experiencia."
+  }
+  </script>
+</head>
+<body class="bg-slateSoft text-neutral-900 font-sans antialiased">
+  <header class="sticky top-0 z-50 glass text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <svg class="w-9 h-9" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="ldg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#E95A4E"/>
+              <stop offset="1" stop-color="#B93832"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 4c10 7 20 6 26 8v20c0 16-11 25-26 28C17 57 6 48 6 32V12c6-2 16-1 26-8z" fill="url(#ldg)" stroke="#F8FAFC" stroke-width="2.2" />
+          <path d="M22 20h20M26 20v28M32 20v32M38 20v28" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M22 24h20" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="font-semibold tracking-tight">Legiodynamis</div>
+          <div class="text-[11px] text-white/60 -mt-0.5">Infraestructura TI</div>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm text-white/80">
+        <a href="/#servicios" class="hover:text-white transition">Servicios</a>
+        <a href="/#porque" class="hover:text-white transition">Por qué nosotros</a>
+        <a href="/#proceso" class="hover:text-white transition">Cómo trabajamos</a>
+        <a href="/#precios" class="hover:text-white transition">Planes</a>
+        <a href="/#contacto" class="hover:text-white transition">Contacto</a>
+      </nav>
+      <a href="/#contacto" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white text-ink font-semibold hover:bg-white/90 transition">
+        Hablar contigo
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </header>
+
+  <section class="relative overflow-hidden bg-hero text-white grid-fade">
+    <div class="container relative mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16 lg:pt-20 lg:pb-20">
+      <div data-aos="fade-up">
+        <p class="text-xs text-white/50"><a href="/" class="hover:text-white/80">Inicio</a> / <a href="/#servicios" class="hover:text-white/80">Servicios</a> / VMware</p>
+        <div class="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-white/80">
+          <span class="w-2 h-2 rounded-full bg-coral"></span>
+          Especialidad: VMware
+        </div>
+        <h1 class="mt-6 text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.08] max-w-3xl">VMware y virtualización operada con criterio real</h1>
+        <p class="mt-6 text-lg text-white/72 max-w-2xl leading-relaxed">Soporte para entornos vSphere/ESXi que necesitan rendimiento estable, buenas prácticas y menos sobresaltos en producción.</p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a href="/#contacto" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-coral text-white font-semibold hover:opacity-95 transition shadow-panel">
+            Solicitar una conversación
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="/#precios" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl border border-white/12 bg-white/5 text-white font-semibold hover:bg-white/10 transition">
+            Ver planes
+          </a>
+        </div>
+        <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl">
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Experiencia</div>
+              <div class="mt-2 text-xl font-bold">15 años</div>
+              <div class="mt-1 text-white/60 text-sm">en virtualización</div>
+            </div>
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Cobertura</div>
+              <div class="mt-2 text-xl font-bold">vSphere · ESXi</div>
+              <div class="mt-1 text-white/60 text-sm">storage y HA/DRS</div>
+            </div>
+            <div class="rounded-2xl bg-white/6 dark-card backdrop-blur-sm p-5">
+              <div class="text-white/55 text-sm">Formato</div>
+              <div class="mt-2 text-xl font-bold">Servicio cercano</div>
+              <div class="mt-1 text-white/60 text-sm">atención directa</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Alcance</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Qué incluye el servicio</h2>
+      </div>
+      <div class="mt-12 grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="gauge" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Revisión de rendimiento</h3>
+          <p class="mt-3 text-neutral-600">Análisis de CPU, memoria, storage y red para detectar cuellos de botella reales.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="60">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="layers" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Gestión de snapshots</h3>
+          <p class="mt-3 text-neutral-600">Orden y limpieza de snapshots acumulados que degradan el rendimiento del datastore.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="120">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="hard-drive" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Storage y datastores</h3>
+          <p class="mt-3 text-neutral-600">Revisión de capacidad, latencia y distribución de cargas entre datastores.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="180">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Alta disponibilidad</h3>
+          <p class="mt-3 text-neutral-600">Configuración de clusters, HA y DRS acorde al tamaño real de la operación.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="240">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="refresh-cw" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Actualizaciones ESXi</h3>
+          <p class="mt-3 text-neutral-600">Ciclo de parches y upgrades planificado, con ventanas de mantenimiento claras.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft hover:-translate-y-1 hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-12 h-12 rounded-2xl bg-coral/10 text-coral flex items-center justify-center"><i data-lucide="check-circle" class="w-6 h-6"></i></div>
+          <h3 class="mt-5 text-xl font-semibold">Buenas prácticas</h3>
+          <p class="mt-3 text-neutral-600">Estandarización de VMs, plantillas y convenciones para facilitar la administración futura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_.85fr] gap-10">
+      <div data-aos="fade-right">
+        <div class="section-label text-xs text-coralDark font-semibold">Diagnóstico</div>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Problemas que solemos resolver</h2>
+        <ul class="mt-8 space-y-4">
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Hosts sobrecargados sin visibilidad clara de dónde está el problema.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Snapshots olvidados que consumen storage y afectan el rendimiento.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Entornos virtualizados crecidos “orgánicamente”, sin estándar ni documentación.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Incertidumbre sobre la capacidad real disponible para nuevos proyectos.</span></li>
+        <li class="flex gap-3 items-start"><i data-lucide="alert-circle" class="w-5 h-5 text-coral mt-0.5 shrink-0"></i><span class="text-neutral-700">Falta de plan de contingencia ante la caída de un host.</span></li>
+        </ul>
+      </div>
+      <div class="rounded-[2rem] bg-slateSoft light-card p-8" data-aos="fade-left">
+        <div class="section-label text-xs text-coralDark font-semibold">Para quién</div>
+        <h3 class="mt-3 text-2xl font-bold">¿Es este servicio para tu empresa?</h3>
+        <p class="mt-4 text-neutral-600 leading-relaxed">Dirigido a empresas con infraestructura virtualizada en VMware (uno o varios hosts ESXi) que necesitan un especialista que entienda tanto la plataforma como el impacto real en el negocio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceso" class="py-24 bg-slateSoft">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl" data-aos="fade-up">
+        <div class="section-label text-xs text-coralDark font-semibold">Cómo trabajamos</div>
+        <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Un proceso simple y entendible</h2>
+      </div>
+      <div class="mt-12 grid md:grid-cols-4 gap-6">
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-sm font-semibold text-coralDark">Paso 1</div>
+          <h3 class="mt-3 text-xl font-semibold">Conversamos</h3>
+          <p class="mt-2 text-neutral-600">Auditamos el clúster: hosts, VMs, storage, redes y configuración de HA/DRS.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="70">
+          <div class="text-sm font-semibold text-coralDark">Paso 2</div>
+          <h3 class="mt-3 text-xl font-semibold">Revisamos</h3>
+          <p class="mt-2 text-neutral-600">Identificamos riesgos y oportunidades de mejora con impacto real.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="140">
+          <div class="text-sm font-semibold text-coralDark">Paso 3</div>
+          <h3 class="mt-3 text-xl font-semibold">Proponemos</h3>
+          <p class="mt-2 text-neutral-600">Aplicamos cambios en ventanas controladas, minimizando riesgo operativo.</p>
+        </div>
+        <div class="rounded-3xl bg-white p-6 light-card shadow-soft" data-aos="fade-up" data-aos-delay="210">
+          <div class="text-sm font-semibold text-coralDark">Paso 4</div>
+          <h3 class="mt-3 text-xl font-semibold">Ejecutamos</h3>
+          <p class="mt-2 text-neutral-600">Entregamos documentación clara y, si aplica, seguimiento continuo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-[2rem] bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 overflow-hidden relative">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,90,78,0.18),transparent_25%)]"></div>
+        <div class="relative z-10 max-w-2xl">
+          <h3 class="text-2xl md:text-3xl font-bold">¿Tu entorno VMware necesita una revisión seria?</h3>
+          <p class="text-white/70 mt-3">Conversemos sobre el estado de tu virtualización y qué mejoras tienen mayor impacto.</p>
+        </div>
+        <a href="/#contacto" class="relative z-10 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-coral text-white font-semibold hover:opacity-95 transition">
+          Agendar conversación
+          <i data-lucide="phone" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 border-t border-slate-200 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <svg class="w-7 h-7" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 4c10 7 20 6 26 8v20c0 16-11 25-26 28C17 57 6 48 6 32V12c6-2 16-1 26-8z" fill="#E95A4E" stroke="#0f172a" stroke-width="2.2" />
+            <path d="M22 20h20M26 20v28M32 20v32M38 20v28" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M22 24h20" fill="none" stroke="#F8FAFC" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <div class="font-semibold">Legiodynamis</div>
+            <div class="text-xs text-neutral-500">Infraestructura TI con atención directa</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 text-sm text-neutral-600">
+          <a href="/#servicios" class="hover:text-coral">Servicios</a>
+          <a href="/#porque" class="hover:text-coral">Por qué nosotros</a>
+          <a href="/#precios" class="hover:text-coral">Planes</a>
+          <a href="/#contacto" class="hover:text-coral">Contacto</a>
+        </div>
+      </div>
+      <p class="mt-6 text-xs text-neutral-500">© <span id="year"></span> Legiodynamis. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    lucide.createIcons();
+    AOS.init({ duration: 700, once: true, offset: 40 });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="/chat-widget.js" defer></script>
+</body>
+</html>
