@@ -58,44 +58,78 @@ export async function onRequestPost(context) {
     parts: [{ text: String(m.text || "").slice(0, 2000) }],
   }));
 
+    // Modelos en orden de preferencia. Si el primero no existe (404) o está saturado (503/429),
+  // se reintenta y luego se pasa al siguiente.
   const MODELS = ["gemini-3.8-flash", "gemini-3.7-flash"];
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
+  const ATTEMPTS_PER_MODEL = 2;
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-  let geminiRes;
-  try {
-    geminiRes = await fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "x-goog-api-key": env.GEMINI_API_KEY,
-      },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-        contents,
-        generationConfig: {
-          maxOutputTokens: 1024,
-          temperature: 0.4,
-        },
-      }),
-    });
-  } catch (err) {
-    return jsonResponse({ error: "No se pudo contactar al servicio de IA." }, 502);
+  const payload = JSON.stringify({
+    systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+    contents,
+    generationConfig: {
+      maxOutputTokens: 1024,
+      temperature: 0.4,
+    },
+  });
+
+  let lastStatus = 0;
+
+  for (const model of MODELS) {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+
+    for (let attempt = 1; attempt <= ATTEMPTS_PER_MODEL; attempt++) {
+      let res;
+      try {
+        res = await fetch(url, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "x-goog-api-key": env.GEMINI_API_KEY,
+          },
+          body: payload,
+        });
+      } catch (err) {
+        lastStatus = 0;
+        console.log(`[chat] ${model} intento ${attempt}: error de red`);
+        await sleep(400 * attempt);
+        continue;
+      }
+
+      if (res.ok) {
+        let data;
+        try {
+          data = await res.json();
+        } catch {
+          lastStatus = 502;
+          break;
+        }
+        const reply = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("").trim();
+        if (reply) return jsonResponse({ reply });
+        lastStatus = 204;
+        break;
+      }
+
+      lastStatus = res.status;
+      const detail = await res.text().catch(() => "");
+      console.log(`[chat] ${model} intento ${attempt}: HTTP ${res.status} ${detail.slice(0, 300)}`);
+
+      if (res.status === 404 || res.status === 400 || res.status === 401 || res.status === 403) {
+        break;
+      }
+      await sleep(600 * attempt);
+    }
   }
 
-  if (!geminiRes.ok) {
-    const detail = await geminiRes.text().catch(() => "");
-    return jsonResponse(
-      { error: "El servicio de IA devolvió un error.", detail: detail.slice(0, 500) },
-      502
-    );
-  }
-
-  const data = await geminiRes.json();
-  const reply =
-    data?.candidates?.[0]?.content?.parts?.map((p) => p.text || "").join("").trim() ||
-    "No pude generar una respuesta. Intenta de nuevo o usa el formulario de contacto.";
-
-  return jsonResponse({ reply });
+  return jsonResponse(
+    {
+      error: "El servicio de IA no está disponible en este momento.",
+      status: lastStatus,
+      reply:
+        "En este momento el asistente automático tiene mucha demanda. Intenta de nuevo en unos segundos o escríbenos a contacto@legiodynamis.com.",
+    },
+    503
+  );
 }
 
 export async function onRequestOptions() {
