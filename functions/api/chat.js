@@ -60,10 +60,10 @@ export async function onRequestPost(context) {
 
     // Modelos en orden de preferencia. Si el primero no existe (404) o está saturado (503/429),
   // se reintenta y luego se pasa al siguiente.
-  const MODELS = ["gemini-3.8-flash", "gemini-3.7-flash"];
-  const ATTEMPTS_PER_MODEL = 2;
+const MODELS = ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-3.6-flash", "gemini-3.7-flash"];
+const ATTEMPTS_PER_MODEL = 1;
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
+  
   const payload = JSON.stringify({
     systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
     contents,
