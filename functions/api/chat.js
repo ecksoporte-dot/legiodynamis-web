@@ -73,7 +73,7 @@ export async function onRequestPost(context) {
         systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
         contents,
         generationConfig: {
-          maxOutputTokens: 400,
+          maxOutputTokens: 1024,
           temperature: 0.4,
         },
       }),
