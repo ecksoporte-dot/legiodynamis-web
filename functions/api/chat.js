@@ -58,7 +58,7 @@ export async function onRequestPost(context) {
     parts: [{ text: String(m.text || "").slice(0, 2000) }],
   }));
 
-  const MODEL = "gemini-3.8-flash";
+  const MODEL = "gemini-2.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
   let geminiRes;
@@ -73,7 +73,7 @@ export async function onRequestPost(context) {
         systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
         contents,
         generationConfig: {
-          maxOutputTokens: 1024,
+          maxOutputTokens: 400,
           temperature: 0.4,
         },
       }),
