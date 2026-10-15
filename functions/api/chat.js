@@ -58,7 +58,7 @@ export async function onRequestPost(context) {
     parts: [{ text: String(m.text || "").slice(0, 2000) }],
   }));
 
-  const MODEL = "gemini-2.5-flash";
+  const MODELS = ["gemini-3.8-flash", "gemini-3.7-flash"];
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
   let geminiRes;
